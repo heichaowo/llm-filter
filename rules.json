@@ -1,0 +1,24 @@
+{
+  "redact": [
+    { "id": "anthropic_key", "pattern": "sk-ant-[A-Za-z0-9_-]{20,}", "replace": "[密钥]" },
+    { "id": "openai_key", "pattern": "sk-[A-Za-z0-9_-]{20,}", "replace": "[密钥]" },
+    { "id": "github_token", "pattern": "(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}", "replace": "[密钥]" },
+    { "id": "aws_key", "pattern": "AKIA[0-9A-Z]{16}", "replace": "[密钥]" },
+    { "id": "google_key", "pattern": "AIza[0-9A-Za-z_-]{35}", "replace": "[密钥]" },
+    { "id": "telegram_bot_token", "pattern": "\\b\\d{8,10}:[A-Za-z0-9_-]{35}\\b", "replace": "[密钥]" },
+    { "id": "bearer", "pattern": "Bearer\\s+[A-Za-z0-9._~+/=-]{20,}", "replace": "Bearer [密钥]" },
+    { "id": "id_card_cn", "pattern": "(?<![0-9A-Za-z])[1-9]\\d{5}(?:19|20)\\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\\d|3[01])\\d{3}[\\dXx](?![0-9A-Za-z])", "replace": "[身份证号]" },
+    { "id": "bank_card", "pattern": "(?<!\\d)\\d{4}(?:[ -]?\\d{4}){3}(?:[ -]?\\d{1,3})?(?!\\d)", "replace": "[银行卡号]", "validate": "luhn" },
+    { "id": "phone_cn", "pattern": "(?<!\\d)(?:\\+?86[ -]?)?1[3-9]\\d[ -]?\\d{4}[ -]?\\d{4}(?!\\d)", "replace": "[手机号]" },
+    { "id": "email", "pattern": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}", "replace": "[邮箱]" },
+    { "id": "ipv4", "pattern": "(?<![\\d.])(?:(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?![\\d.])", "replace": "[IP]" }
+  ],
+  "terms": {
+    "replace": [],
+    "replaceWith": "[已隐去]",
+    "block": []
+  },
+  "block": {
+    "reply": "NO_REPLY"
+  }
+}
